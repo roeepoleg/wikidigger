@@ -4,6 +4,7 @@ public class ArticleVO {
 	
 	private String title;
 	private String url;
+	private String nextTitle;
 	private int distance;
 	private boolean isCorrect = false;
 	
