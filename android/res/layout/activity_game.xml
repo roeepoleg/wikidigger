@@ -16,32 +16,37 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" />
 
-    <Button
-        android:id="@+id/btnAnswer3"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/black_overlay"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/btnAnswer2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAnswer3" />
+        <Button
+            android:id="@+id/btnAnswer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnAnswer1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAnswer2" />
+        <Button
+            android:id="@+id/btnAnswer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnAnswer0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAnswer1" />
+        <Button
+            android:id="@+id/btnAnswer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <ProgressBar
+        <Button
+            android:id="@+id/btnAnswer0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+        <ProgressBar
         android:id="@+id/progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
