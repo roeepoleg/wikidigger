@@ -37,6 +37,9 @@ public class GameActivity extends Activity implements OnClickListener, IGetQuizT
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_game);
+		// hide action bar
+		getActionBar().hide();
+		
 		// get reference to all views
 		mSivovator = (ProgressBar) findViewById(R.id.progress);
 		mQuestion = (WebView) findViewById(R.id.webQuestion);
@@ -50,7 +53,7 @@ public class GameActivity extends Activity implements OnClickListener, IGetQuizT
 		mBtnAnswer2.setOnClickListener(this);
 		mBtnAnswer3.setOnClickListener(this);
 
-		
+		// load quiz
 		onGetQuizResult(AppModel.getInstance().getCurrentQuiz());
 
 	}
@@ -58,7 +61,7 @@ public class GameActivity extends Activity implements OnClickListener, IGetQuizT
 
 	@Override
 	public void onClick(View v) {
-		
+		// prevent double/multiple clicks
 		if (mAllowClicks) 
 			mAllowClicks = false;
 		else 
@@ -76,7 +79,7 @@ public class GameActivity extends Activity implements OnClickListener, IGetQuizT
 				view.setBackgroundColor(getResources().getColor(R.color.RED));
 			}
 			
-			// SLEEP 2 SECONDS HERE ...
+			// return to normal style
 		    Handler handler = new Handler(); 
 		    handler.postDelayed(new Runnable() { 
 		         public void run() { 
@@ -133,19 +136,22 @@ public class GameActivity extends Activity implements OnClickListener, IGetQuizT
 			mMap.put(mBtnAnswer3, arr[3]);
 			
 			// assign buttons values
-			mBtnAnswer0.setText(arr[0].getTitle());
-			mBtnAnswer1.setText(arr[1].getTitle());
-			mBtnAnswer2.setText(arr[2].getTitle());
-			mBtnAnswer3.setText(arr[3].getTitle());
+			mBtnAnswer0.setText(arr[0].getTitle().replace('_', ' '));
+			mBtnAnswer1.setText(arr[1].getTitle().replace('_', ' '));
+			mBtnAnswer2.setText(arr[2].getTitle().replace('_', ' '));
+			mBtnAnswer3.setText(arr[3].getTitle().replace('_', ' '));
 			
 			mAllowClicks = true;
 		}
 	}
 
+	/*
+	 * Randomly set the answers in the buttons
+	 */
 	private ArticleVO[] getRandomOrderedArray(ArticleVO[] answers) {
 
 		ArticleVO[] mixed = new ArticleVO[4];
-		int seed = (int) Math.round(Math.random()*3);
+		int seed = (int) Math.ceil(Math.random()*3);
 		for (int i = 0; i < mixed.length; i++) {
 			mixed[i] = answers[i%seed];
 		}

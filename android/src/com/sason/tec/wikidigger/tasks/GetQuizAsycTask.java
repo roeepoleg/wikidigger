@@ -47,7 +47,7 @@ public class GetQuizAsycTask extends AsyncTask<String, Void, QuizVO> {
 				params.length > 0) {
 			String url = REST_API_PATH+ params[0];
 
-
+Log.i("GetQuizAsycTask",params[0].toString());
 			// make Http GET call to the server with the given URL
 			// Prepare a request object
 			HttpGet httpget = new HttpGet(url); 
@@ -122,7 +122,9 @@ public class GetQuizAsycTask extends AsyncTask<String, Void, QuizVO> {
 	}
 
 	public interface IGetQuizTaskHandler {
-
+		/*
+		 * Quiz loaded event hanler
+		 */
 		public void onGetQuizResult (QuizVO result);
 
 	}
